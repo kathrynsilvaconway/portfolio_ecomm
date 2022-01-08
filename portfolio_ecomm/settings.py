@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +128,52 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STAITCFILES_DIRS = (os.path.join (BASE_DIR, 'static'),
 )
+
+AWS_ACCESS_KEY_ID = 'AKIAVSDGA7QUUDQXQOWC'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ksilcon-portfolio-imgs'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# [
+#     {
+#         "AllowedHeaders": [
+#             "*"
+#         ],
+#         "AllowedMethods": [
+#             "PUT",
+#             "POST",
+#             "DELETE"
+#         ],
+#         "AllowedOrigins": [
+#             "*"
+#         ],
+#         "ExposeHeaders": []
+#     },
+#     {
+#         "AllowedHeaders": [
+#             "*"
+#         ],
+#         "AllowedMethods": [
+#             "PUT",
+#             "POST",
+#             "DELETE"
+#         ],
+#         "AllowedOrigins": [
+#             "http://www.example2.com"
+#         ],
+#         "ExposeHeaders": []
+#     },
+#     {
+#         "AllowedHeaders": [],
+#         "AllowedMethods": [
+#             "GET"
+#         ],
+#         "AllowedOrigins": [
+#             "*"
+#         ],
+#         "ExposeHeaders": []
+#     }
+# ]
