@@ -30,6 +30,7 @@
 			{% endif %}
 		</div>
 		<hr>
+    <h1>{{user.first_name}}'s Current Order:</h1>
 {% for x in cart.items.all %}
 	<p>{{x.item_name}}</p>
 {% endfor %}

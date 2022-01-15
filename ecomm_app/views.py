@@ -125,7 +125,8 @@ def add_to_cart(request, item_id):
         this_cart = Cart.objects.get(id=request.session['cart_id'])
         this_cart.items.add(this_item)
         context = {
-            'cart': Cart.objects.get(id=request.session['cart_id'])
+            'cart': Cart.objects.get(id=request.session['cart_id']),
+            'user': User.objects.get(id=request.session['id'])
         }
         return render(request, 'cart.html', context)
     else:
@@ -134,7 +135,8 @@ def add_to_cart(request, item_id):
         )
         this_cart.items.add(this_item)
         context = {
-            'cart': Cart.objects.get(id=this_cart.id)
+            'cart': Cart.objects.get(id=this_cart.id),
+            'user': User.objects.get(id=request.session['id'])
         }
         request.session['cart_id'] = this_cart.id
         return render(request, 'cart.html', context)
@@ -223,7 +225,8 @@ def display_cat(request, cat_id):
 
 def display_cart(request):
         context = {
-            'cart': Cart.objects.get(id=request.session['cart_id'])
+            'cart': Cart.objects.get(id=request.session['cart_id']),
+            'user': User.objects.get(id=request.session['id'])
         }
         return render(request, 'cart.html', context)
 

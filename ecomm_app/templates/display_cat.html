@@ -37,6 +37,7 @@
 					<div class="product-box">
 						<img src="{{item.image.url}}" alt="product-img">	
 						<h4><a href="/single_product/{{item.id}}">{{item.item_name}}</a></h4>
+						<p>{{item.desc}}</p>
 						<p>${{item.price}}</p>
 						{% if request.session.id %}
 							<form action="/add_to_cart/{{item.id}}">
