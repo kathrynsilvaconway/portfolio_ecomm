@@ -1,8 +1,10 @@
-# portfolio_ecomm
+# Literally My Trash
 
-Literally my Trash is a humorous shopping site that allows users to browse my actual garbage. 
-Users may create an account, add items to a cart, make a mock purchase, and leave reviews. User
-and registration pages contain regex vailation and display useful eoors for invalid data.
+This is a humorous shopping site that allows users to browse my actual garbage. 
+Users may create an account, add items to a cart, make a mock purchase, and leave reviews. 
+The shopping cart is built from scratch in Django models. User and registration pages 
+contain regex vailation and display useful erors for invalid data. Users can 
+manage orders as well as their product reviews.
 
 
 Built with:
