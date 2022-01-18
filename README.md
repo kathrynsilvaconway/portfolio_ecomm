@@ -17,3 +17,5 @@ Django Dependancies:
   Bcrypt
  
 Deployed to AWS EC2. Images hosted on AWS s3.
+
+![](github_screenshots/literally.png)
