@@ -15,6 +15,7 @@
 			<a href="/"><h5>Home</h5></a>
 			{% if request.session.id %}
 			<a href="/display_orders"><h5>My orders</h5></a>
+			<a href="/display_reviews"><h5>My Reviews</h5></a>
 			{% if cart.items.count > 0 %}
 			<a href="/display_cart"><h5>My Cart({{cart.items.count}})</h5></a>
 			{% else%}
@@ -35,7 +36,7 @@
 				<p class="product-price">${{item.price}}</p>
 				<p>{{item.desc}}</p>
 				{% if item.avg_stars != False %}
-					<p>Rating: {{item.avg_stars}} stars</p>		
+					<p>Average Rating: {{item.avg_stars}} stars</p>		
 				{% endif %}
 				{% if request.session.id %}
 					<a href="/add_to_cart/{{item.id}}" class="btn btn-secondary">Add To Cart</a>

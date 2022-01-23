@@ -23,7 +23,7 @@
 			<a href="/"><h5>Home</h5></a>
 			{% if request.session.id %}
 			<a href="/display_orders"><h5>My orders</h5></a>
-			<a href="/display_reviews"><h5>My Reviews</h5></a>
+            <a href="/display_reviews"><h5>My Reviews</h5></a>
 			{% if cart.items.count > 0 %}
 			<a href="/display_cart"><h5>My Cart({{cart.items.count}})</h5></a>
 			{% else%}
@@ -35,26 +35,20 @@
 			{% endif %}
 		</div>
 		<hr>
-		<h2 style="margin-bottom: 20px;">Your Previous Orders:</h2>
-			{% for order in user.orders.all %}
-			<div id="product-box">
-				<h5> Order Date: {{order.created_at}}</h5>
-				<h6>Order Number: 322-{{order.id}}</h6>
-				{% for item in order.items.all %}
-				<div class="media product-card">
-					<a class="pull-left" href="">
-						<img class="media-object" width="50px" src="{{item.image.url}}" alt="Image" />
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading"><a href="/single_product/{{item.id}}">{{item.item_name}}</a></h4>
-						<p class="price">1 x ${{item.price}}</p>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-		<p>Total: {{order.total}}</p>
-		<a href="/delete_order/{{order.id}}">Delete this order</a>
-		<hr>
-		{% endfor %}
+		<h2 style="margin-bottom: 20px;">{{user.first_name}}'s Reviews:</h2>
+        {% for review in user.my_reviews.all %}
+        <div id="product-box">
+            <h3>{{review.item.item_name}}</h3>
+            <h4>{{review.title}}</h4>
+            <p>{{review.review}}</p>
+            <p>Rating: {{review.stars}}</p>
+            <p> Reviewed on: {{review.created_at}}</p>
+            <a href="/delete_review/{{review.id}}">Delete this review</a>
+            <hr>
+        </div>
+        {% endfor %}
+            {% if user.my_reviews.all.count == 0 %}
+                <h4>You haven't reviewed anything yet.</h4>
+            {% endif %}
 	</body>
   </html>

@@ -28,6 +28,17 @@ def process_reg(request):
         request.session['id'] = this_user.id
         return redirect('/')
 
+def demo_login(request):
+    demo_user = User.objects.get(id=3)
+    request.session['id'] = demo_user.id
+
+    return redirect('/')
+
+def demo_add_to_cart(request):
+    demo_user = request.session['demo_id']
+    request.session['demo_cart'] = 'demo_cart'
+
+    
 def process_login(request):
     if request.method == "POST":
         errors = User.objects.login_validator(request.POST)
@@ -38,6 +49,8 @@ def process_login(request):
         one_user = User.objects.filter(email = request.POST['email'])
         request.session['id'] = one_user[0].id
         request.session['first_name'] = one_user[0].first_name
+        id_test = User.objects.get(id=request.session['id'])
+        print('ccccccccccooooooowwwwwwwwwwwwwwwwwwww', id_test.id)
         return redirect('/')
     return redirect('/')
 
@@ -285,6 +298,13 @@ def display_orders(request):
         'orders': Order.objects.all()
     }
     return render(request, 'display_orders.html', context)
+
+def display_reviews(request):
+    context = {
+        'user': User.objects.get(id=request.session['id']),
+        'reviews': Review.objects.all()
+    }
+    return render(request, 'display_reviews.html', context)
 
 def delete_order(request, order_id):
         order = Order.objects.get(id=order_id)
